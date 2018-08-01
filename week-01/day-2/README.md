@@ -1,6 +1,4 @@
 # README
 
 ## Links for other repos
-
-    - <https://github.com/STADD/git-lesson-repository>
-    -
+[git-lesson-repository](https://github.com/STADD/git-lesson-repository)
