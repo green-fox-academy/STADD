@@ -1,9 +1,9 @@
 # README
 
-## Links for other repos
+## Links for other repositories
 
-[git-lesson-repository](https://github.com/STADD/git-lesson-repository)
+-[git-lesson-repository](https://github.com/STADD/git-lesson-repository)
 
-[patchwork](https://github.com/STADD/patchwork)
+-[patchwork](https://github.com/STADD/patchwork)
 
-[hello-world](https://github.com/STADD/hello-world)
+-[hello-world](https://github.com/STADD/hello-world)
