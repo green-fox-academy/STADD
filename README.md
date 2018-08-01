@@ -8,7 +8,7 @@
 
 - [hello-world](https://github.com/STADD/hello-world)
 
-- [My website](https://github.com/STADD/STADD.github.io)
+- [my-website](https://github.com/STADD/STADD.github.io)
 
 ## [badboi-syllabus](https://github.com/green-fox-academy/badboi-syllabus)
 
