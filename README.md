@@ -8,4 +8,4 @@
 
 - [hello-world](https://github.com/STADD/hello-world)
 
-- [badboi-syllabus](https://github.com/green-fox-academy/badboi-syllabus)
+## [badboi-syllabus](https://github.com/green-fox-academy/badboi-syllabus)
