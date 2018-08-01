@@ -8,8 +8,8 @@
 
 - [hello-world](https://github.com/STADD/hello-world)
 
-- [My website](https://stadd.github.io/)
+- [My website](https://github.com/STADD/STADD.github.io)
 
 ## [badboi-syllabus](https://github.com/green-fox-academy/badboi-syllabus)
 
-## [My website](https://github.com/STADD/STADD.github.io)
+## [My website](https://stadd.github.io/)
