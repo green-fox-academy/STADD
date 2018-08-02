@@ -53,6 +53,7 @@ public class VariableMutation {
         System.out.println(j % 2 == 0 || j % 3 == 0);
 
         String k = "Apple";
+        k =  k + k + k + k;
 
         System.out.println(k);
 
