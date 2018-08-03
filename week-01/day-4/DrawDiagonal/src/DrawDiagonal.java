@@ -8,12 +8,11 @@ public class DrawDiagonal {
         System.out.println("Type in a number:");
         int userIn = sc.nextInt();
 
-        String s = "";
-        String space = "";
+        String s = "%";
+        String space = " ";
 
         for (int a = 0; a < userIn; a++){
-            System.out.println();
-            if()
+            for (int b = 0; a )
         }
     }
 }
