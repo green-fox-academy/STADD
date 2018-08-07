@@ -6,7 +6,7 @@ public class TakesLonger {
         // Add "always takes longer than" to the StringBuilder (quote) between the words "It" and "you"
         // Using pieces of the quote variable (instead of just redefining the string)
 
-        quote = quote.replace("It", "It always takes longer than");
+        quote = quote.substring(0,21) + "always takes longer than" + quote.substring(21, quote.length());
 
         System.out.println(quote);
     }
