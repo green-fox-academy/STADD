@@ -12,9 +12,9 @@ public class SolarSystem{
         // Expected output: "Mercury", "Venus", "Earth", "Mars", "Jupiter", "Uranus", "Neptune", "Saturn"
     }
 
-    public static ArrayList<String> putSaturn(ArrayList<String> planetList){
-        planetList.add("Saturn");
+    public static ArrayList<String> putSaturn(ArrayList<String> list){
+        list.add("Saturn");
 
-        return planetList;
+        return list;
     }
 }
