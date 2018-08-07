@@ -2,8 +2,8 @@ public class SimpleReplace {
     public static void main(String... args){
         String example = "In a dishwasher far far away";
 
-        String a = example.replace("dishwasher", "galaxy");
+        example = example.replace("dishwasher", "galaxy");
 
-        System.out.println(a);
+        System.out.println(example);
     }
 }
