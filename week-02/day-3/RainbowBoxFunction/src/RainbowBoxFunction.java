@@ -20,8 +20,8 @@ public class RainbowBoxFunction {
         int a = -25;
         int b = -25;
         int c = 50;
-        for (int i = 1; i <=6 ; i++) {
-            final Color col = new Color(((100)), (255 / i), (150));
+        for (int i = 1; i <=13 ; i++) {
+            final Color col = new Color(((100/i)), (255 / i), (150));
             graphics.setColor(col);
             graphics.fillRect(a + 25 * i, b + 25 * i, x - c * i, x - c * i);
         }
