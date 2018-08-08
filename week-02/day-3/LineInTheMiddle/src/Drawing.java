@@ -8,8 +8,8 @@ public class Drawing {
     public static void mainDraw(Graphics graphics){
         // draw a red horizontal line to the canvas' middle.
         // draw a green vertical line to the canvas' middle.
-        int x = WIDTH / 2;
-        int y = HEIGHT / 2;
+        int x = WIDTH / 2 - 8;
+        int y = HEIGHT / 2 - 25;
         graphics.setColor(Color.red);
         graphics.drawLine(0, y,320, y);
         graphics.setColor(Color.green);
