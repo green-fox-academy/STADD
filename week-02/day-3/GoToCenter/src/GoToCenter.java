@@ -11,10 +11,12 @@ public class GoToCenter {
         // and draws a line from that point to the center of the canvas.
         // Draw 3 lines with that function. Use loop for that.
 
-        int x = 0;
-        int y = 147;
-        for (int i = 0; i < 3; i++) {
-            lineDraw(graphics, x * i, y * i);
+        for (int x = 0; x < 320; x += 20) {
+            for (int y = 0; y <= 300; y += 20) {
+                if (x == 300 || y == 300 || x == 0 || y == 0) {
+                    lineDraw(graphics, x, y);
+                }
+            }
         }
 
     }
