@@ -28,14 +28,14 @@ public class StarryNight {
     }
 
     public static void stars(Graphics graphics, float r){
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 10; i++) {
             Random rn = new Random();
             int range = 300 - 0 + 1;
             int c =  rn.nextInt(range) + 0;
 
             int ra = 300 - 0 + 1;
             int d =  rn.nextInt(ra) + 0;
-            graphics.fillRect(c, d, 5, 5);
+            graphics.fillRect(c, d, 2, 2);
 
 
 
