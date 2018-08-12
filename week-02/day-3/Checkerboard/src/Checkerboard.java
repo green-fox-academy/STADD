@@ -10,16 +10,24 @@ public class Checkerboard {
 
         int x = 0;
         int y = 0;
-        int a = 38;
+        int a = 37;
 
         graphics.setColor(Color.WHITE);
         graphics.fillRect(0, 0, 38 * 8, 38 * 8);
+        row(graphics, x, y, a);
 
     }
 
-    public static void row(Graphics graphics, int x, int y, int a){
+    public static void row(Graphics graphics, int x, int y, int a) {
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
                 graphics.setColor(Color.black);
-                graphics.fillRect(x, y, a, a);
+                graphics.fillRect(x + a * j * 2, y + a * i * 2, a, a);
+                graphics.fillRect(x + a + a * j * 2, a + a * i * 2 , a, a);
+            }
+
+        }
+
     }
 
     // Don't touch the code below
