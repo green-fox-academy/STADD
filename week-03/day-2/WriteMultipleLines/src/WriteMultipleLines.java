@@ -13,7 +13,7 @@ public class WriteMultipleLines {
 
         String path = "my-file.txt";
         String word = "apple";
-        int number = 5;
+        int number = 6;
         writeFile(path, word, number);
     }
 
