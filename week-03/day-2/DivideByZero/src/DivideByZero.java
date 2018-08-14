@@ -8,13 +8,12 @@ public class DivideByZero {
         divideTen(userIn);
     }
 
-    public static int divideTen(int userIn) {
-        int result = userIn / 10;
-        if (result == 0) {
-            System.out.println("fail");
-        } else {
+    public static void divideTen(int userIn) {
+        try {
+            int result = 10 / userIn;
             System.out.println(result);
+        } catch (ArithmeticException e) {
+            System.out.println("Fail");
         }
-        return userIn;
     }
 }
