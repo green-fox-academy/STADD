@@ -7,6 +7,7 @@ public class Main {
         for (int i = 0; i < 6; i++) {
             do {
                 diceSet.reroll(i);
+                System.out.println(Arrays.toString(diceSet.getCurrent()));
             } while (diceSet.getCurrent(i) != 6);
         }
         System.out.println(Arrays.toString(diceSet.getCurrent()));
