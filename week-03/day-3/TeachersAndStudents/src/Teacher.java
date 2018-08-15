@@ -1,7 +1,10 @@
 public class Teacher {
-    String teacher;
 
     public void answer() {
 
+    }
+
+    public void teach(Student student) {
+        student.learn();
     }
 }

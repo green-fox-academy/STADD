@@ -1,8 +1,10 @@
 public class Student {
-    String student;
-
 
     public void learn() {
 
+    }
+
+    public void question(Teacher teacher) {
+        teacher.answer();
     }
 }
