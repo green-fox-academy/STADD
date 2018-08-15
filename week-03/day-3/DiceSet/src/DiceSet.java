@@ -34,7 +34,7 @@ public class DiceSet {
     }
 
     public static void main(String[] args) {
-        DiceSet diceSet = new Dice();
+        DiceSet diceSet = new DiceSet();
         diceSet.getCurrent();
         diceSet.roll();
         diceSet.getCurrent();
