@@ -29,7 +29,7 @@ public class Pirates {
         } else {
             System.out.println("he's dead");
         }
-        if (drinkCounter == 2) {
+        if (drinkCounter == 100) {
             parrot = true;
             System.out.println(this.name + " got a parrot!");
         }
