@@ -12,6 +12,7 @@ public class Ship {
 
     Ship(Pirates captain) {
         this.captain = captain;
+        this.score = score;
     }
 
     public static void fillShip(Ship ship) {
@@ -21,11 +22,20 @@ public class Ship {
         }
     }
 
+    public void battle(Ship ship) {
+        System.out.println("-------");
+        if (this.score > ship.score) {
+            System.out.println("You win!");
+        } else {
+            System.out.println("You lose!");
+        }
+    }
+
     public void shipInfo() {
         System.out.println("-------");
         System.out.println("Ship name: " + name);
         crewSize = rand.nextInt(100);
-         rumConsumed = rand.nextInt(10);
+        rumConsumed = rand.nextInt(10);
         System.out.println("Crew size: " + crewSize);
         for (int i = 0; i < rumConsumed; i++) {
             captain.drinkSomeRum();
@@ -34,16 +44,7 @@ public class Ship {
         if (captain.alive == false) {
             System.out.println("The captain is dead");
         }
-    }
-
-    public void battle(Ship ship) {
-        this.score = crewSize - rumConsumed;
-        ship.score = crewSize - rumConsumed;
-        System.out.println("-------");
-        if (this.score > ship.score) {
-            System.out.println("You win!");
-        } else {
-            System.out.println("You lose!");
-        }
+        score = crewSize - rumConsumed;
+        System.out.println(score);
     }
 }
