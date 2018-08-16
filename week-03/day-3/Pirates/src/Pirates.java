@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class Pirates {
     boolean intoxicated;
     boolean alive = true;
@@ -9,7 +6,6 @@ public class Pirates {
     String name;
 
     int drinkCounter;
-    List<Pirates> piratesList = new ArrayList<>();
 
 
     Pirates(int health, String name) {
@@ -19,6 +15,10 @@ public class Pirates {
 
     public void getHealth() {
         System.out.println(this.health);
+    }
+
+    public void drinks() {
+        System.out.println(this.drinkCounter);
     }
 
 
@@ -59,8 +59,7 @@ public class Pirates {
         if (this.health == 0) {
             this.die();
             System.out.println(this.name + " died");
-        }
-        else if (pirates.health == 0) {
+        } else if (pirates.health == 0) {
             pirates.die();
             System.out.println(pirates.name + " died");
         }
