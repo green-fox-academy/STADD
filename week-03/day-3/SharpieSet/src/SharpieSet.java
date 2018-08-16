@@ -1,15 +1,23 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class SharpieSet {
-    static int sum;
+    int sum = 0;
+    List<Sharpie> sharpies = new ArrayList<>();
 
-
-    static void countUsable(Sharpie sharpie) {
-        if (sharpie.inkAmount > 0) {
-            sum ++;
+    void countUsable(Sharpie sharpie) {
+        for (int i = 0; i < sharpies.size(); i++) {
+            if (sharpie.inkAmount > 0) {
+                sum++;
+            }
         }
     }
 
-    static void removeTrash(Sharpie sharpie) {
-        if (sharpie.inkAmount == 0) {
+    void removeTrash(Sharpie sharpie) {
+        for (int i = 0; i < sharpies.size(); i++) {
+            if (sharpie.inkAmount == 0) {
+                sharpies.remove(sharpie);
+            }
         }
     }
 }
