@@ -8,7 +8,9 @@ public class Main {
         Sharpie sharpie5 = new Sharpie("orange", 4);
         Sharpie sharpie6 = new Sharpie("purple", 5);
 
-        sharpie1.use();
-        System.out.println(sharpie1.inkAmount);
+
+        System.out.println(SharpieSet.sum);
     }
+
+
 }

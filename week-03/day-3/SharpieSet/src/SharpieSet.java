@@ -1,17 +1,15 @@
 public class SharpieSet {
-
-    Sharpie sharpie1 = new Sharpie("blue", 2);
-    Sharpie sharpie2 = new Sharpie("green", 3);
-    Sharpie sharpie3 = new Sharpie("red", 5);
-    Sharpie sharpie4 = new Sharpie("yellow", 1);
-    Sharpie sharpie5 = new Sharpie("orange", 4);
-    Sharpie sharpie6 = new Sharpie("purple", 5);
+    static int sum;
 
 
-    public void countUsable() {
+    static void countUsable(Sharpie sharpie) {
+        if (sharpie.inkAmount > 0) {
+            sum ++;
+        }
     }
 
-    public void removeTrash() {
-
+    static void removeTrash(Sharpie sharpie) {
+        if (sharpie.inkAmount == 0) {
+        }
     }
 }

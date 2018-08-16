@@ -1,7 +1,7 @@
 public class Sharpie {
     String color;
     float width;
-    double inkAmount;
+    float inkAmount;
 
     Sharpie(String color, float width) {
         this.color = color;
@@ -9,7 +9,7 @@ public class Sharpie {
         this.inkAmount = 100;
     }
 
-    public void use() {
-        inkAmount -= Math.random();
+    void use() {
+        inkAmount -= (Math.random() * 100.0 - 1.0) + 1.0;
     }
 }
