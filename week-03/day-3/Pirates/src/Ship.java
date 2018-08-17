@@ -23,7 +23,7 @@ public class Ship {
     }
 
     public void battle(Ship ship) {
-        System.out.println("-------");
+        System.out.println("------------------------------------------");
         if (this.score > ship.score) {
             System.out.println("You win!");
         } else {
@@ -32,7 +32,8 @@ public class Ship {
     }
 
     public void shipInfo() {
-        System.out.println("-------");
+        System.out.println("------------------------------------------");
+        System.out.println(":::Ship details:::");
         System.out.println("Ship name: " + name);
         crewSize = rand.nextInt(100);
         rumConsumed = rand.nextInt(10);
