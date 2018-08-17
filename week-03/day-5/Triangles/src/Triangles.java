@@ -14,10 +14,15 @@ public class Triangles extends JComponent {
         int x0 = 500;
         int y0 = 500;
         int size = 300;
-
+        Polygon polyBase = new Polygon();
         Graphics2D graphics = (Graphics2D) g;
         int strokeWidth = 2;
 
+        ((Graphics2D) g).setStroke(new BasicStroke(strokeWidth));
+        polyBase.addPoint(200, 351);
+        polyBase.addPoint(800, 351);
+        polyBase.addPoint(500, 944);
+        g.drawPolygon(polyBase);
         drawTriangle(graphics, x0, y0, size, 0, strokeWidth);
     }
 
