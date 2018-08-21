@@ -1,17 +1,15 @@
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class Cohort {
-    String name;
-    List students;
-    List mentors;
+    private String name;
+    private List students;
+    private List mentors;
 
-    Cohort(String name){
+    Cohort(String name) {
         this.name = name;
         this.students = new ArrayList<>();
         this.mentors = new ArrayList<>();
-
     }
 
     public void addStudent(Student student) {
@@ -22,7 +20,7 @@ public class Cohort {
         mentors.add(mentor);
     }
 
-    public void info(){
+    public void info() {
         System.out.println("The " + name + " cohort has " + students.size() + " students and " + mentors.size() + " mentors.");
     }
 }

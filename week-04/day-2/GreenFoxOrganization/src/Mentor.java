@@ -1,5 +1,5 @@
 public class Mentor extends Person {
-    String level;
+    private String level;
 
     Mentor() {
         this.level = "intermediate";

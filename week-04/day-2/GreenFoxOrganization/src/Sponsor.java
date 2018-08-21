@@ -1,6 +1,6 @@
 public class Sponsor extends Person {
-    String company;
-    int hiredStudents;
+    private String company;
+    private int hiredStudents;
 
     Sponsor() {
         this.company = "Google";

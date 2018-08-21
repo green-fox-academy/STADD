@@ -1,9 +1,8 @@
 import com.sun.xml.internal.ws.api.ha.StickyFeature;
 
 public class Student extends Person {
-
-    String previousOrganization;
-    int skippedDays;
+    private String previousOrganization;
+    private int skippedDays;
 
     Student() {
         this.previousOrganization = "The School of Life";
