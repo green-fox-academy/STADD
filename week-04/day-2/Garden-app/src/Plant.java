@@ -2,7 +2,6 @@ public class Plant {
     private String color;
     private int waterLevel;
 
-
     Plant(String color, int waterLevel) {
         this.setColor(color);
         this.setWater(waterLevel);
