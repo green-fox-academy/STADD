@@ -1,3 +1,4 @@
+/*
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -8,7 +9,7 @@ public class Armada {
     static int armadaSize = rand.nextInt(100);
 
     public void war(Armada armada) {
-        for (int i = 0; i < armadaSize i++) {
+       //for (int i = 0; i < armadaSize i++) {
 
         }
     }
@@ -24,3 +25,4 @@ public class Armada {
         System.out.println(armadaSize);
     }
 }
+*/
