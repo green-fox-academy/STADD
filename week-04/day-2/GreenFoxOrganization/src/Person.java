@@ -1,7 +1,40 @@
 public class Person {
-    String name;
-    int age;
-    String gender;
+    private String name;
+    private int age;
+    private String gender;
+
+    public void setName(String name) {
+        if (name.length() <= 3) {
+            throw new IllegalArgumentException("name");
+        }
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setAge(int age) {
+        if (age >= 150) {
+            throw new IllegalArgumentException("age");
+        }
+        this.age = age;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setGender(String gender) {
+        if (gender != "male" && gender != "female") {
+            throw new IllegalArgumentException("gender");
+        }
+        this.gender = gender;
+    }
+
+    public String getGender() {
+        return gender;
+    }
 
     Person() {
         this.name = "Jane Doe";
@@ -10,9 +43,9 @@ public class Person {
     }
 
     public Person(String name, int age, String gender) {
-        this.name = name;
-        this.age = age;
-        this.gender = gender;
+        this.setName(name);
+        this.setAge(age);
+        this.setGender(gender);
     }
 
     public void introduce() {
