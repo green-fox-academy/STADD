@@ -10,7 +10,6 @@ public class Sponsor extends Person {
     Sponsor(String name, int age, String gender, String company) {
         super(name, age, gender);
         this.company = company;
-        this.hiredStudents = hiredStudents;
     }
 
     @Override
