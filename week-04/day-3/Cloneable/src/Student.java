@@ -27,12 +27,11 @@ public class Student extends Person implements Cloneable {
     }
 
     @Override
-    public Student clone() {
-        Student studentClone = new Student();
-        studentClone.setAge(20);
-        studentClone.setGender("male");
-        studentClone.setName("John");
-        studentClone.previousOrganization = "BME";
-        return studentClone;
+    public Object clone() {
+       try{
+           return super.clone();
+       } catch (Exception e){
+       }
+       return null;
     }
 }
