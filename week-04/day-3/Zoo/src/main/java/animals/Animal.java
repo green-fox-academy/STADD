@@ -26,7 +26,7 @@ abstract public class Animal {
 
     abstract public void eat();
 
-    public void sleep(){
+    public void sleep() {
         System.out.println(this.getName1() + " is sleeping.");
     }
 }
