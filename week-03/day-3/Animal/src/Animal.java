@@ -1,18 +1,22 @@
 public class Animal {
-    int hunger = 50;
-    int thirst = 50;
+    int hunger;
+    int thirst;
 
+    public Animal() {
+        this.hunger = 50;
+        this.thirst = 50;
+    }
 
     public void eat() {
-        this.hunger -= 1;
+        this.hunger--;
     }
 
     public void drink() {
-        this.thirst -= 1;
+        this.thirst--;
     }
 
     public void play() {
-        this.hunger += 1;
-        this.thirst += 1;
+        this.hunger++;
+        this.thirst++;
     }
 }
