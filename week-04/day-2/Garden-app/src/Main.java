@@ -19,6 +19,13 @@ public class Main {
         tree2.waterNeed();
 
         //Water plants
-        garden.watering(40);
+        garden.watering(40, flower);
+        garden.watering(40, flower2);
+
+
+        flower.waterNeed();
+        flower2.waterNeed();
+        tree.waterNeed();
+        tree2.waterNeed();
     }
 }
