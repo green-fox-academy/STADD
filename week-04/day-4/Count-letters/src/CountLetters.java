@@ -14,21 +14,14 @@ public class CountLetters {
         this.map = new HashMap<>();
     }
 
-    public void addToMap() {
-        char[] charArray = string.toCharArray();
-        for (int i = 0; i < charArray.length; i++) {
-            map.put(charArray[i], i);
-        }
-    }
-
     public void countOccurence() {
         char[] charArray = string.toCharArray();
-        int counter = 0;
         for (int i = 0; i < charArray.length; i++) {
-            char occur = charArray[i];
-            if (map.containsKey(occur)) ;
-            counter++;
-            map.put(charArray[i], counter);
+            try {
+                map.put(charArray[i], map.get(charArray[i]) + 1);
+            } catch (NullPointerException e) {
+                map.put(charArray[i], 1);
+            }
         }
     }
 }
