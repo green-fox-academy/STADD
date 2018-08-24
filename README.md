@@ -10,6 +10,8 @@
 
 - [my-website](https://github.com/STADD/STADD.github.io)
 
+- [TODO Application](https://github.com/STADD/todo-app)
+
 ## [badboi-syllabus](https://github.com/green-fox-academy/badboi-syllabus)
 
 ## [My website](https://stadd.github.io/)
