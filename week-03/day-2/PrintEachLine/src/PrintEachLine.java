@@ -2,7 +2,9 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.Files;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class PrintEachLine {
     public static void main(String[] args) {
@@ -10,12 +12,16 @@ public class PrintEachLine {
         // each of the lines form the file.
         // If the program is unable to read the file (for example it does not exists),
         // then it should print an error message like: "Unable to read file: my-file.txt"
-        Path filePath = Paths.get("/my-file.txt");
+    }
+
+    public void mostProductiveYear(String studioName){
         try {
-            List<String> myFile = Files.readAllLines(filePath);
-            System.out.println(myFile);
+            Map<String, Integer> countYear = new HashMap<>();
+            List<String> list = Files.readAllLines(Paths.get(studioName + ".csv"));
+
+
         } catch (IOException e) {
-            System.out.println("Unable to read file: my-file.txt");
+            e.printStackTrace();
         }
     }
 }

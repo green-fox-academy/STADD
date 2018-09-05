@@ -1,12 +1,19 @@
+import org.junit.Before;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertFalse;
 
 public class AnagramTest {
+    Anagram anagram;
+
+    @Before
+    public void createAnagram(){
+        anagram = new Anagram();
+    }
+
     @Test
     public void test1() {
-        Anagram anagram = new Anagram();
         String string1 = "rail safety";
         String string2 = "fairy tales";
 
@@ -15,7 +22,6 @@ public class AnagramTest {
 
     @Test
     public void test2() {
-        Anagram anagram = new Anagram();
         String string1 = "rail safety";
         String string2 = "fairy tales";
 
