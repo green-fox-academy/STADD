@@ -9,5 +9,4 @@ main()
 
   printf("%d\n", hours_daily * weeks * 5);
   printf("%.2f", hours_weekly / average_weekly);
-  printf(weeks);
 }
