@@ -1,8 +1,10 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include<stdio.h>
 
-int main()
+main()
 {
-    printf("Hello world!\n");
-    return 0;
+    // Modify this program to print Humpty Dumpty riddle correctly
+    printf("Humpty Dumpty sat on a wall,\n");
+    printf("Humpty Dumpty had a great fall.\n");
+    printf("All the king's horses and all the king's men\n");
+    printf("Couldn't put Humpty together again.");
 }
