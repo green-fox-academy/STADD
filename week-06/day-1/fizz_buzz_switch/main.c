@@ -13,13 +13,19 @@ main()
 
     for(a = 1; a <= 100; a++)
     {
-        switch(a % 3)
+        switch(a % 5)
         {
         case 0:
+            printf("Buzz\n");
+            break;
+        case 3:
             printf("Fizz\n");
+            break;
+        case 5:
+            printf("FizzBuzz\n");
             break;
         default :
             printf("%d\n", a);
         }
     }
-
+}
