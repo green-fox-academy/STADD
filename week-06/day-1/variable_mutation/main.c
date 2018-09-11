@@ -84,14 +84,4 @@ main()
     {
         printf("False\n");
     }
-
-    char k[100] = "Apple";
-/*
-    //fill the k variable with its cotnent 4 times
-    int do_while = 4;
-    do
-    {
-    }
-    while(do_while  < 4);
-*/
 }
