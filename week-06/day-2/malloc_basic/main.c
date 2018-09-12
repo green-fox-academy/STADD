@@ -18,7 +18,14 @@ int main()
         printf("%d\n", pointer[i]);
     }
 
+    printf("\n\n");
+
     free(pointer);
+
+    for(i = 0; i < 5; i++)
+    {
+        printf("%d\n", pointer[i]);
+    }
 
     return 0;
 }

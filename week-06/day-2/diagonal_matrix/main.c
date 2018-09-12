@@ -4,11 +4,10 @@
 int main()
 {
     int i, j, size;
+    int matrix[size][size];
 
     printf("Enter the size of the matrix: \n");
     scanf("%d", &size);
-    int matrix[size][size];
-
 
     for(i = 0; i < size; ++i)
     {

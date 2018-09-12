@@ -20,5 +20,12 @@ int main()
 
     free(pointer);
 
+    printf("\n\n");
+
+    for(i = 0; i < 5; i++)
+    {
+        printf("%d\n", pointer[i]);
+    }
+
     return 0;
 }
