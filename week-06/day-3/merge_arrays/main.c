@@ -13,8 +13,8 @@ int main()
     int* p_odd = NULL;
     int i;
 
-    pointer = (int*)malloc(10*sizeof(int));
-    p_odd = (int*)malloc(10*sizeof(int));
+    pointer = (int*)calloc(10,sizeof(int));
+    p_odd = (int*)calloc(10,sizeof(int));
 
     for(i = 0; i < 10; i++)
     {
@@ -43,7 +43,7 @@ int main()
     {
         if(p_odd[i] % 2 != 0)
         {
-            pointer[i] = i;
+            pointer[i] = p_odd[i];
         }
 
         printf("%d\n", pointer[i]);
