@@ -14,4 +14,6 @@
 
 ## [badboi-syllabus](https://github.com/green-fox-academy/badboi-syllabus)
 
+## [embedded-syllabus](https://github.com/green-fox-academy/alopex-embedded-syllabus)
+
 ## [My website](https://stadd.github.io/)
