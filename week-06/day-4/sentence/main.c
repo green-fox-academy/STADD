@@ -4,12 +4,11 @@
 int main()
 {
     char string[256];
-    char* p_s = string;
 
     printf("Type in a sentence:\n\n");
     gets(string);
 
-    splitString(p_s);
+    splitString(string);
 
     return(0);
 }
