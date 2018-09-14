@@ -12,15 +12,20 @@ int main()
 
     printf("%s %s %s\n", abc[0], abc[1], abc[2]);
 
+
+
+    printf("%s %s %s\n", abc[0], abc[1], abc[2]);
+
+
+    return 0;
+}
+
+char* swapElement(char* array)
+{
     char* temp;
 
     temp = abc[0];
 
     abc[0] = abc[2];
     abc[2] = temp;
-
-    printf("%s %s %s\n", abc[0], abc[1], abc[2]);
-
-
-    return 0;
 }
