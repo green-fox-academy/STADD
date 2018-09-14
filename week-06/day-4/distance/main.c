@@ -21,16 +21,16 @@ int distance(char* array)
     int first = 0;
     int last = 0;
 
-    for(i = 0; i < 30; i++) {
+    for(i = 0; i < strlen(array); i++) {
         if(array[i] == 's') {
             first = i;
             break;
         }
     }
 
-    for(i = 0; i < 30; i++) {
+    for(i = 0; i < strlen(array); i++) {
         if(array[i] == 's') {
-            last += i;
+            last = i;
         }
     }
 

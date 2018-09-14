@@ -7,9 +7,7 @@ char* append(char* name);
 int main()
 {
     char typo[] = "Chinchill";
-    char* p_t = &typo;
-
-    printf("%s", append(p_t));
+    printf("%s", append(typo));
 
     return 0;
 }
@@ -21,6 +19,6 @@ char* append(char* name)
     strcpy(name2, name);
     name2[len] = 'a';
     name2[len + 1] = '\0';
-    return name2;
 
+    return name2;
 }
