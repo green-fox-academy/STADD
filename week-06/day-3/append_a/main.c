@@ -2,21 +2,18 @@
 #include <stdlib.h>
 #include <string.h>
 
-// - Create an array variable named `animals`
-//   with the following content: `["koal", "pand", "zebr"]`
-// - Add all elements an `"a"` at the end
-char* append(char* name);
-
 int main()
 {
-    char animals[100];
+    char *animals[3][4] = {{"koal"}, {"pand"}, {"zebr"}};
 
-    animals[0] = "koal";
-    animals[1] = "pand";
-    animals[2] = "zebr";
+    char* firstElement = animals[0][0];
+    char* secondElement = animals[1][0];
+    char* thirdElement = animals[2][0];
 
-    char *teszt = strtok(animals, " ");
-    printf("%s", teszt);
+    firstElement[4] = 'a';
+    firstElement[5] = '\0';
+
+    printf("%s  %s  %s", firstElement, secondElement, thirdElement);
 
     return 0;
 }
