@@ -3,18 +3,8 @@
 
 #define PI 3.14
 
-float circleArea(float radius)
-{
-    float area = radius * radius * PI;
+float circleArea(float radius);
 
-    return area;
-}
-
-float circumference(float radius)
-{
-    float circumference = 2 * radius * PI;
-
-    return circumference;
-}
+float circumference(float radius);
 
 #endif // FUNCTION_H_INCLUDED
