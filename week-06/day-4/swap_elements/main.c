@@ -5,17 +5,14 @@
 //   with the following content: `["first", "second", "third"]`
 // - Swap the first and the third element of `abc` by using a function
 // - That function should take an array as a parameter and return the correct array
+char* swapElement(char* array);
 
 int main()
 {
-    char* abc[3] = {"first", "second", "third"};
+    char abc = {"first", "second", "third"};
+    char* p_abc = abc;
 
-    printf("%s %s %s\n", abc[0], abc[1], abc[2]);
-
-
-
-    printf("%s %s %s\n", abc[0], abc[1], abc[2]);
-
+    printf("%s", swapElement(p_abc));
 
     return 0;
 }
@@ -24,8 +21,8 @@ char* swapElement(char* array)
 {
     char* temp;
 
-    temp = abc[0];
+    temp = array[0];
 
-    abc[0] = abc[2];
-    abc[2] = temp;
+    array[0] = array[2];
+    arry[2] = temp;
 }
