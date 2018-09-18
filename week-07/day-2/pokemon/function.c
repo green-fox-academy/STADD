@@ -6,7 +6,7 @@ int get_faster(struct Pokemon *pokemon, int length, float speed)
     int i;
 
     for(i = 0; i < length; i++) {
-        if(pokemon[i].speed < 0.0) {
+        if(pokemon[i].speed < 0.0 || pokemon[i].speed > 10.0) {
             count = 0;
         } else {
             if(pokemon[i].speed >= speed) {

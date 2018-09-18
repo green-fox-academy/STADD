@@ -2,6 +2,9 @@
 #define FUNCTION_H_INCLUDED
 #include <stdio.h>
 #include <string.h>
+#define MAX 10.0
+#define MIN 0.0
+
 
 enum pokemon_type {NORMAL, FIRE, WATER, ELECTRIC, GRASS, ICE, FIGHTING, POISION, GROUND, FLYING, PSYCHIC, BUG, ROCK, GHOST, DRAGON, DARK, STEEL, FAIRY};
 

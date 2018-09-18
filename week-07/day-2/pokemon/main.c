@@ -12,7 +12,7 @@ int main()
     pokemon[1].speed = 5.1;
     pokemon[2].speed = 0.3;
 
-    pokemon[0].strength = 0.1;
+    pokemon[0].strength = 10.1;
     pokemon[1].strength = 0.3;
     pokemon[2].strength = 1.4;
 
