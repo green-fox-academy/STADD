@@ -6,14 +6,18 @@ richest that has wooden leg
 
 int main()
 {
-    struct Pirate pirate[10];
+
+    struct Pirate pirate[2];
 
     pirate[0].gold_count = 100;
     pirate[1].gold_count = 23;
 
-    printf("The pirates has %d gold\n", goldSum(pirate));
-    printf("One pirate has an average of %.1f gold\n", avgGold(pirate));
-    printf("%s", theChosenOne(pirate));
+    *pirate[0].name = "Jack";
+    *pirate[1].name = "black";
+
+    printf("The pirates has %d gold\n", goldSum(pirate, 2));
+    printf("One pirate has an average of %.1f gold\n", avgGold(pirate, 2));
+    printf("%s", theLegend(pirate, 2));
 
     return 0;
 }
