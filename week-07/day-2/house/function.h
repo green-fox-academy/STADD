@@ -11,5 +11,5 @@ typedef struct {
 
 void worthBuying(House house);
 
-int countWorthy(House house[]);
+int countWorthy(House house[], int length);
 #endif // FUNCTION_H_INCLUDED

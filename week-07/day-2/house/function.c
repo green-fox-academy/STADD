@@ -9,12 +9,12 @@ void worthBuying(House house)
     }
 }
 
-int countWorthy(House houses[])
+int countWorthy(House houses[], int length)
 {
     int count = 0;
     int i;
 
-    for(i = 0; i < 10 ; i++) {
+    for(i = 0; i < length ; i++) {
         if (houses[i].price <= houses[i].area * 400) {
             count++;
         }

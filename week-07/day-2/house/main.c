@@ -13,7 +13,7 @@ int main()
     houses[0].price = 10;
     houses[0].area = 100;
 
-    printf("%d", countWorthy(houses));
+    printf("%d", countWorthy(houses, 10));
 
     return 0;
 }
