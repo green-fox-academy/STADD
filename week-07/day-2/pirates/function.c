@@ -22,20 +22,21 @@ double avgGold(struct Pirate pirate[], int length)
 
 char* theLegend(struct Pirate pirate[], int length)
 {
-    char* legend = pirate[0].name;
+    char* legend = "";
+    //strcpy(legend, pirate[0].name);
+    legend = pirate[0].name;
     int gold = pirate[0].gold_count;
     int i, j;
+    int b = 0;
 
     for (i = 0; i < length; i++) {
         if (pirate[i].has_wooden_leg == 0 && pirate[i].gold_count > gold ) {
             gold = pirate[i].gold_count;
+            b = i;
         }
     }
+    legend = pirate[b].name;
+    //strcpy(legend, pirate[b].name);
 
-    for(j = 0; j < length; j++) {
-        if (gold == pirate[i].gold_count) {
-            strcpy(legend, pirate[j].name);
-        }
-    }
     return legend;
 }
