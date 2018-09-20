@@ -134,6 +134,11 @@ void after_error()
     char* date;
     char* time;
     char* temperature;
+
+    char* year;
+    char* month;
+    char* day;
+
     int a = '-';
 
     clear_screen();
@@ -144,19 +149,27 @@ void after_error()
         date = strtok(printLine, " ");
         time = strtok(NULL, " ");
         temperature = strtok(NULL, " ");
-        int temp = 0;
+
+
+        year = strtok(date, ".");
+        month = strtok(NULL, ".");
+        day = strtok(NULL, ".");
+
+        int stringCount = 0;
 
 
 
         //Check temperature
         for (int i = 0; i < strlen(temperature) - 1; i++) {
             if(isdigit(temperature[i]) == 0) {
-                temp++;
+                stringCount++;
             }
         }
 
-        if((temp == 0) || (temperature[0] == '-')) {
-            printf("%s %s%s",date, time, temperature);
+        if((stringCount == 0) || (temperature[0] == '-')) {
+            if(atoi(year) <= 2018 && atoi(month) <= 12 && atoi(day) <= 31) {
+                printf("%s.%s.%s %s%s",year, month, day, time, temperature);
+            }
         }
     }
 
