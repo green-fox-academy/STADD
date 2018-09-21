@@ -14,6 +14,7 @@ int main()
     while (1) {
         if (kbhit()) {
             char key = getch();
+
             switch (key) {
             case 'h':
                 print_startup_message();
@@ -41,6 +42,10 @@ int main()
                 break;
             case 'k':
                 after_error();
+                break;
+            case 'a':
+                averageByDay();
+                break;
             default:
                 break;
             }

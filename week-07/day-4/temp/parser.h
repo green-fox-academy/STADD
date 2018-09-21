@@ -10,5 +10,6 @@ int open_port();
 int close_port();
 int log_data();
 void after_error();
+void averageByDay();
 
 #endif // PARSER_H_INCLUDED

@@ -143,8 +143,6 @@ void after_error()
     char* min;
     char* sec;
 
-    int a = '-';
-
     clear_screen();
     printf("          Log file\n");
     printf("==============================\n\n");
@@ -178,11 +176,11 @@ void after_error()
         //Test code for date filter
         if(strlen(year) <= 4 && atoi(year) <= 2018) {
             if(strlen(month) <= 2 && month[0] != '-' && atoi(month) <= 12) {
-                if(strlen(day) <= 2 && day[0] != '-' && atoi(day) <= 31) {
+                if(strlen(day) <= 2 && day[0] != '-' && atoi(day) <= 31 && atoi(day) != 0) {
                     if((stringCount == 0) || (temperature[0] == '-')) {
-                        if(hour[0] != '-' && atoi(hour) <= 23) {
-                            if(min[0] != '-' && atoi(min) <= 59) {
-                                if(sec[0] != '-' && atoi(sec) <= 59) {
+                        if(hour[0] != '-' && atoi(hour) <= 23 && atoi(hour) != 0) {
+                            if(min[0] != '-' && atoi(min) <= 59 && atoi(min) != 0) {
+                                if(sec[0] != '-' && atoi(sec) <= 59 && atoi(sec) != 0) {
                                     printf("%s.%s.%s\t%s:%s:%s\t%s", year, month, day, hour, min, sec, temperature);
                                 }
                             }
@@ -195,4 +193,14 @@ void after_error()
 
 
     fclose(file);
+}
+
+void averageByDay()
+{
+    clear_screen();
+
+    FILE * file;
+    file= fopen("log.txt", "r");
+
+
 }

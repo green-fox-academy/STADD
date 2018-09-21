@@ -17,6 +17,20 @@ void print_startup_message()
 	printf(" c      Close port\n");
     printf(" e      Exit from the program\n");
     printf(" k      List after error handling\n");
+    printf(" a      Avarage temperature handling by days\n");
+}
+
+void average_message(){
+    clear_screen();
+
+    FILE * file;
+    file = fopen("log.txt", "r");
+
+    printf("Choose from the numbers below\n");
+    printf("-----------------------------\n");
+    printf("1       Daily average\n");
+    printf("2       Last days average\n");
+    printf("3       Day to day average\n");
 }
 
 void clear_screen()
