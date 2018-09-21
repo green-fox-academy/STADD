@@ -139,6 +139,10 @@ void after_error()
     char* month;
     char* day;
 
+    char* hour;
+    char* min;
+    char* sec;
+
     int a = '-';
 
     clear_screen();
@@ -150,10 +154,15 @@ void after_error()
         time = strtok(NULL, " ");
         temperature = strtok(NULL, " ");
 
-
+        //Date tokens
         year = strtok(date, ".");
         month = strtok(NULL, ".");
         day = strtok(NULL, ".");
+
+        //Time tokens
+        hour = strtok(time, ":");
+        min = strtok(NULL, ":");
+        sec = strtok(NULL, ":");
 
         int stringCount = 0;
 
@@ -166,9 +175,20 @@ void after_error()
             }
         }
 
-        if((stringCount == 0) || (temperature[0] == '-')) {
-            if(atoi(year) <= 2018 && atoi(month) <= 12 && atoi(day) <= 31) {
-                printf("%s.%s.%s %s%s",year, month, day, time, temperature);
+        //Test code for date filter
+        if(strlen(year) <= 4 && atoi(year) <= 2018) {
+            if(strlen(month) <= 2 && month[0] != '-' && atoi(month) <= 12) {
+                if(strlen(day) <= 2 && day[0] != '-' && atoi(day) <= 31) {
+                    if((stringCount == 0) || (temperature[0] == '-')) {
+                        if(hour[0] != '-' && atoi(hour) <= 23) {
+                            if(min[0] != '-' && atoi(min) <= 59) {
+                                if(sec[0] != '-' && atoi(sec) <= 59) {
+                                    printf("%s.%s.%s\t%s:%s:%s\t%s", year, month, day, hour, min, sec, temperature);
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }
