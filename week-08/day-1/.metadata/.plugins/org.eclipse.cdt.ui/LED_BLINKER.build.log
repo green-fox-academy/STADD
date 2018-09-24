@@ -1,0 +1,23 @@
+17:33:36 **** Incremental Build of configuration Debug for project Led_blinker ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\STADD\Desktop\greenfox\STADD\week-08\day-1\Led_blinker\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -DSTM32 -DSTM32F7 -DSTM32F746NGHx -DSTM32F746G_DISCO -DDEBUG -DSTM32F746xx -DUSE_HAL_DRIVER -I"C:/Users/STADD/Desktop/greenfox/STADD/week-08/day-1/Led_blinker/Utilities/Components/ampire480272" -I"C:/Users/STADD/Desktop/greenfox/STADD/week-08/day-1/Led_blinker/Utilities/Components/n25q512a" -I"C:/Users/STADD/Desktop/greenfox/STADD/week-08/day-1/Led_blinker/Utilities/Components/s5k5cag" -I"C:/Users/STADD/Desktop/greenfox/STADD/week-08/day-1/Led_blinker/Utilities/Components/mfxstm32l152" -I"C:/Users/STADD/Desktop/greenfox/STADD/week-08/day-1/Led_blinker/CMSIS/device" -I"C:/Users/STADD/Desktop/greenfox/STADD/week-08/day-1/Led_blinker/Utilities/Components/n25q128a" -I"C:/Users/STADD/Desktop/greenfox/STADD/week-08/day-1/Led_blinker/Utilities/Components/ts3510" -I"C:/Users/STADD/Desktop/greenfox/STADD/week-08/day-1/Led_blinker/Utilities/Components/st7735" -I"C:/Users/STADD/Desktop/greenfox/STADD/week-08/day-1/Led_blinker/Utilities/Components/rk043fn48h" -I"C:/Users/STADD/Desktop/greenfox/STADD/week-08/day-1/Led_blinker/HAL_Driver/Inc/Legacy" -I"C:/Users/STADD/Desktop/greenfox/STADD/week-08/day-1/Led_blinker/Utilities/Components/ov9655" -I"C:/Users/STADD/Desktop/greenfox/STADD/week-08/day-1/Led_blinker/Utilities/Components/otm8009a" -I"C:/Users/STADD/Desktop/greenfox/STADD/week-08/day-1/Led_blinker/Utilities/STM32746G-Discovery" -I"C:/Users/STADD/Desktop/greenfox/STADD/week-08/day-1/Led_blinker/Utilities/Components/Common" -I"C:/Users/STADD/Desktop/greenfox/STADD/week-08/day-1/Led_blinker/HAL_Driver/Inc" -I"C:/Users/STADD/Desktop/greenfox/STADD/week-08/day-1/Led_blinker/Utilities/Components/stmpe811" -I"C:/Users/STADD/Desktop/greenfox/STADD/week-08/day-1/Led_blinker/Utilities/Components/wm8994" -I"C:/Users/STADD/Desktop/greenfox/STADD/week-08/day-1/Led_blinker/Utilities/Fonts" -I"C:/Users/STADD/Desktop/greenfox/STADD/week-08/day-1/Led_blinker/Utilities/Components/ft5336" -I"C:/Users/STADD/Desktop/greenfox/STADD/week-08/day-1/Led_blinker/inc" -I"C:/Users/STADD/Desktop/greenfox/STADD/week-08/day-1/Led_blinker/Utilities/Components/ft6x06" -I"C:/Users/STADD/Desktop/greenfox/STADD/week-08/day-1/Led_blinker/Utilities/Components/exc7200" -I"C:/Users/STADD/Desktop/greenfox/STADD/week-08/day-1/Led_blinker/Utilities/Components/st7789h2" -I"C:/Users/STADD/Desktop/greenfox/STADD/week-08/day-1/Led_blinker/Utilities/Log" -I"C:/Users/STADD/Desktop/greenfox/STADD/week-08/day-1/Led_blinker/Utilities/Components/adv7533" -I"C:/Users/STADD/Desktop/greenfox/STADD/week-08/day-1/Led_blinker/Utilities/Components/ampire640480" -I"C:/Users/STADD/Desktop/greenfox/STADD/week-08/day-1/Led_blinker/CMSIS/core" -I"C:/Users/STADD/Desktop/greenfox/STADD/week-08/day-1/Led_blinker/Utilities/Components/mx25l512" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+Building target: Led_blinker.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -T"C:/Users/STADD/Desktop/greenfox/STADD/week-08/day-1/Led_blinker/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "Led_blinker.elf" @"objects.list"   -lm
+Finished building target: Led_blinker.elf
+ 
+C:/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807130628/tools/make/make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "Led_blinker.elf" "Led_blinker.bin"
+arm-none-eabi-size "Led_blinker.elf"
+   text	   data	    bss	    dec	    hex	filename
+   9660	   1120	   1740	  12520	   30e8	Led_blinker.elf
+ 
+
+17:33:40 Build Finished (took 4s.172ms)
+
