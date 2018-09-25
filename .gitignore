@@ -1,3 +1,4 @@
+### IntelliJ ###
 .idea
 out
 *.iml
@@ -5,59 +6,50 @@ out
 *.class
 
 ### CodeBlocks ###
-# specific to CodeBlocks IDE
 *.layout
 *.depend
 *.cbp
-# generated directories
 bin/
 obj/
-
-# Prerequisites
 *.d
-# Object files
 *.o
 *.ko
 *.obj
 *.elf
-# Linker output
 *.ilk
 *.map
 *.exp
-# Precompiled Headers
 *.gch
 *.pch
-# Executables
 *.exe
 *.out
 *.app
 *.i*86
 *.x86_64
 *.hex
-# Debug files
 *.dSYM/
 *.su
 *.idb
 *.pdb
-# Kernel Module Compile Results
 *.mod*
 .tmp_versions/
 modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
-#Eclipse related
+
+### STM32 System workbench ###
+*.ld
+*.metadata
+*.project
+*.cproject
+*.cfg
+STM32F746G-DISCO.xml
 CMSIS/
 HAL_Driver/
 startup/
 Utilities/
 Debug/
 Release/
-*.ld
-*.project
-*.cproject
-*.cfg
-STM32F746G-DISCO.xml
 .settings/
-#ceedling
 build/

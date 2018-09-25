@@ -66,14 +66,16 @@ int main(void)
     uart_handle.Init.HwFlowCtl = UART_HWCONTROL_NONE;
     uart_handle.Init.Mode = UART_MODE_TX_RX;
 
+#define LCD_FRAME_BUFFER          SDRAM_DEVICE_ADDR
+#define RGB565_BYTE_PER_PIXEL     2
+#define ARBG8888_BYTE_PER_PIXEL   4
+
     BSP_COM_Init(COM1, &uart_handle);
     BSP_LED_Init(LED_GREEN);
     BSP_PB_Init(BUTTON_WAKEUP, BUTTON_MODE_GPIO);
 
     while (1) {
-
         if (BSP_PB_GetState(BUTTON_WAKEUP)) {
-
             HAL_Delay(200);
             BSP_LED_Toggle(LED_GREEN);
         } else {
