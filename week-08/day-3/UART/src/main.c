@@ -73,6 +73,9 @@ int main(void) {
     __HAL_RCC_GPIOA_CLK_ENABLE()
     ;
 
+    __HAL_RCC_GPIOF_CLK_ENABLE()
+    ;
+
     uart_handle.Init.BaudRate = 115200;
     uart_handle.Init.WordLength = UART_WORDLENGTH_8B;
     uart_handle.Init.StopBits = UART_STOPBITS_1;
@@ -88,32 +91,69 @@ int main(void) {
     led.Pull = GPIO_PULLDOWN;
     led.Speed = GPIO_SPEED_HIGH;
 
+    GPIO_InitTypeDef led2;
+    led2.Pin = GPIO_PIN_10;
+    led2.Mode = GPIO_MODE_OUTPUT_PP;
+    led2.Pull = GPIO_PULLDOWN;
+    led2.Speed = GPIO_SPEED_HIGH;
+
+    GPIO_InitTypeDef led3;
+    led3.Pin = GPIO_PIN_9;
+    led3.Mode = GPIO_MODE_OUTPUT_PP;
+    led3.Pull = GPIO_PULLDOWN;
+    led3.Speed = GPIO_SPEED_HIGH;
+
     HAL_GPIO_Init(GPIOA, &led);
+    HAL_GPIO_Init(GPIOF, &led2);
+    HAL_GPIO_Init(GPIOF, &led3);
 
     BSP_COM_Init(COM1, &uart_handle);
 
     setvbuf(stdin, NULL, _IONBF, 0);
-    char c;
-    char text[10];
-    char on = 'o';
-    char off = 'f';
+    //char c;
+    char text[4] = { 0 };
     while (1)
     {
+        HAL_GPIO_WritePin(GPIOF, GPIO_PIN_9, GPIO_PIN_SET);
 
         HAL_UART_Receive(&uart_handle, text, 3, 500);
 
-        if (strcmp(on, c) == 0)
+        if (strcmp(text, "on") == 0)
         {
             HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);
+            memset(text, '\0', 4);
         }
-        else if (strcmp(off, c) == 0)
+
+        else if (strcmp(text, "off") == 0)
         {
             HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
+            memset(text, '\0', 4);
+        } else if (strcmp(text, "\0\0\0\0") != 0)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                HAL_GPIO_WritePin(GPIOF, GPIO_PIN_10, GPIO_PIN_SET);
+                HAL_Delay(300);
+                HAL_GPIO_WritePin(GPIOF, GPIO_PIN_10, GPIO_PIN_RESET);
+                HAL_Delay(300);
+            }
+            memset(text, '\0', 4);
         }
-        c = getchar();
 
+        //HAL_UART_Transmit(&uart_handle, text, 3, 500);
 
-        printf("%c", c);
+        /*
+         if (strcmp('o', c) == 0)
+         {
+         HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);
+         }
+         else if (strcmp('f', c) == 0)
+         {
+         HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
+         }
+         c = getchar();
+         printf("%c", c);
+         */
 
     }
 }
