@@ -7,8 +7,9 @@
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 UART_HandleTypeDef uart_handle;
+RNG_HandleTypeDef rng;
 
-GPIO_InitTypeDef uart_pins;
+GPIO_InitTypeDef led;
 
 //#undef __GNUC__
 
@@ -25,8 +26,6 @@ static void SystemClock_Config(void);
 static void Error_Handler(void);
 static void MPU_Config(void);
 static void CPU_CACHE_Enable(void);
-int _read(int file, char *result, size_t len);
-int _write(int file, char *outgoing, int len);
 
 /* Private functions ---------------------------------------------------------*/
 /**
@@ -34,7 +33,6 @@ int _write(int file, char *outgoing, int len);
  * @param  None
  * @retval None
  */
-
 int main(void) {
     /* This project template calls firstly two functions in order to configure MPU feature
      and to enable the CPU Cache, respectively MPU_Config() and CPU_CACHE_Enable().
@@ -55,26 +53,18 @@ int main(void) {
      - Low Level Initialization
      */
     HAL_Init();
+    HAL_TickFreqTypeDef uwTickFreq = HAL_TICK_FREQ_DEFAULT;
 
     /* Configure the System clock to have a frequency of 216 MHz */
     SystemClock_Config();
 
+    __HAL_RCC_GPIOF_CLK_ENABLE();
+    __HAL_RCC_GPIOA_CLK_ENABLE();
+
+    __HAL_RCC_RNG_CLK_ENABLE();
+
     /* Add your application code here */
-
-    /*
-     uart_pins.Pin = GPIO_PIN_7;
-     uart_pins.Mode = GPIO_MODE_AF_PP;
-     uart_pins.Speed = GPIO_SPEED_FAST;
-     uart_pins.Pull = GPIO_PULLUP;
-     uart_pins.Alternate = GPIO_AF8_USART6;
-     HAL_GPIO_Init(GPIOC, &uart_pins);
-     */
-
-    __HAL_RCC_GPIOA_CLK_ENABLE()
-    ;
-
-    __HAL_RCC_GPIOF_CLK_ENABLE()
-    ;
+    HAL_RNG_MspInit(&rng);
 
     uart_handle.Init.BaudRate = 115200;
     uart_handle.Init.WordLength = UART_WORDLENGTH_8B;
@@ -83,83 +73,107 @@ int main(void) {
     uart_handle.Init.HwFlowCtl = UART_HWCONTROL_NONE;
     uart_handle.Init.Mode = UART_MODE_TX_RX;
 
-    //HAL_UART_Init(&uart_handle);
+    rng.Instance = RNG;
 
     GPIO_InitTypeDef led;
-    led.Pin = GPIO_PIN_0;
+    led.Pin = GPIO_PIN_10;
     led.Mode = GPIO_MODE_OUTPUT_PP;
     led.Pull = GPIO_PULLDOWN;
     led.Speed = GPIO_SPEED_HIGH;
 
     GPIO_InitTypeDef led2;
-    led2.Pin = GPIO_PIN_10;
+    led2.Pin = GPIO_PIN_9;
     led2.Mode = GPIO_MODE_OUTPUT_PP;
     led2.Pull = GPIO_PULLDOWN;
     led2.Speed = GPIO_SPEED_HIGH;
 
+    GPIO_InitTypeDef button;
+    button.Pin = GPIO_PIN_8;
+    button.Mode = GPIO_MODE_INPUT;
+    button.Pull = GPIO_PULLDOWN;
+    button.Speed = GPIO_SPEED_HIGH;
+
+    GPIO_InitTypeDef button2;
+    button2.Pin = GPIO_PIN_7;
+    button2.Mode = GPIO_MODE_INPUT;
+    button2.Pull = GPIO_PULLDOWN;
+    button2.Speed = GPIO_SPEED_HIGH;
+
     GPIO_InitTypeDef led3;
-    led3.Pin = GPIO_PIN_9;
+    led3.Pin = GPIO_PIN_0;
     led3.Mode = GPIO_MODE_OUTPUT_PP;
     led3.Pull = GPIO_PULLDOWN;
     led3.Speed = GPIO_SPEED_HIGH;
 
-    GPIO_InitTypeDef button;
-    led3.Pin = GPIO_PIN_8;
-    led3.Mode = GPIO_MODE_INPUT;
-    led3.Pull = GPIO_PULLDOWN;
-    led3.Speed = GPIO_SPEED_HIGH;
+    BSP_PB_Init(BUTTON_WAKEUP, BUTTON_MODE_GPIO);
 
-    HAL_GPIO_Init(GPIOA, &led);
+    HAL_GPIO_Init(GPIOF, &led);
     HAL_GPIO_Init(GPIOF, &led2);
-    HAL_GPIO_Init(GPIOF, &led3);
+    HAL_GPIO_Init(GPIOA, &led3);
     HAL_GPIO_Init(GPIOF, &button);
+    HAL_GPIO_Init(GPIOF, &button2);
 
     BSP_COM_Init(COM1, &uart_handle);
 
-    setvbuf(stdin, NULL, _IONBF, 0);
-    //char c;
-    char text[4] = { 0 };
+    HAL_RNG_Init(&rng);
+
+    BSP_PB_Init(BUTTON_WAKEUP, BUTTON_MODE_GPIO);
+    int state = 0;
+    uint32_t rndNum;
+    uint32_t start;
+    uint32_t stop;
+    int r;
+
+    uint16_t pin[] = {GPIO_PIN_10, GPIO_PIN_9};
+
+    printf("%s\r\n", "Let's play a game! Are you ready?");
+
     while (1)
     {
-        HAL_UART_Receive(&uart_handle, text, 3, 500);
 
-        if (strcmp(text, "on") == 0)
-        {
-            HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);
-            memset(text, '\0', 4);
-        }
-
-        else if (strcmp(text, "off") == 0)
-        {
-            HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
-            memset(text, '\0', 4);
-        } else if (strcmp(text, "\0\0\0\0") != 0)
-        {
-            for (int i = 0; i < 3; i++)
-            {
-                HAL_GPIO_WritePin(GPIOF, GPIO_PIN_10, GPIO_PIN_SET);
-                HAL_Delay(300);
-                HAL_GPIO_WritePin(GPIOF, GPIO_PIN_10, GPIO_PIN_RESET);
-                HAL_Delay(300);
-            }
-            memset(text, '\0', 4);
-        }
-
-        //HAL_UART_Transmit(&uart_handle, text, 3, 500);
 
         /*
-         if (strcmp('o', c) == 0)
-         {
-         HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);
-         }
-         else if (strcmp('f', c) == 0)
-         {
-         HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
-         }
-         c = getchar();
-         printf("%c", c);
-         */
+        if(HAL_GPIO_ReadPin(GPIOF, GPIO_PIN_7)){
+            HAL_GPIO_WritePin(GPIOF, pin[r], GPIO_PIN_SET);
+        }
+        */
 
+        HAL_RNG_GenerateRandomNumber(&rng, &rndNum);
+        int time = (rndNum % 9000) + 1000;
+
+        if (state == 0)
+        {
+            HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);
+            HAL_Delay(100);
+            HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
+            HAL_Delay(100);
+            r = rand() % 2;
+        }
+
+        if (BSP_PB_GetState(BUTTON_WAKEUP) && state == 0)
+        {
+            HAL_GPIO_WritePin(GPIOF, pin[r], GPIO_PIN_RESET);
+            HAL_Delay(time);
+            HAL_GPIO_WritePin(GPIOF, pin[r], GPIO_PIN_SET);
+            start = HAL_GetTick();
+            state++;
+        }
+
+        if (HAL_GPIO_ReadPin(GPIOF, GPIO_PIN_8) && state == 1 && r == 0)
+        {
+            HAL_GPIO_WritePin(GPIOF, pin[r], GPIO_PIN_RESET);
+            stop = HAL_GetTick();
+            printf("Your reaction was: %lu milliseconds\r\n", stop - start);
+            state = 0;
+        }
+
+        if (HAL_GPIO_ReadPin(GPIOF, GPIO_PIN_7) && state == 1 && r == 1)
+                {
+                    HAL_GPIO_WritePin(GPIOF, pin[r], GPIO_PIN_RESET);
+                    stop = HAL_GetTick();
+                    printf("Your reaction was: %lu milliseconds\r\n", stop - start);
+                    state = 0;
+                }
     }
 }
 /**
@@ -175,30 +189,6 @@ PUTCHAR_PROTOTYPE {
     return ch;
 }
 
-int _read(int file, char *result, size_t len) {
-    HAL_StatusTypeDef status;
-    int retcode = 0;
-
-    if (len != 0)
-    {
-        status = HAL_UART_Receive(&uart_handle, (uint8_t *) result, len,
-        HAL_MAX_DELAY);
-
-        if (status == HAL_OK)
-        {
-            retcode = len;
-        } else
-        {
-            retcode = -1;
-        }
-    }
-    return (retcode);
-}
-
-int _write(int file, char *outgoing, int len) {
-    HAL_UART_Transmit(&uart_handle, (uint8_t *) outgoing, len, 100);
-    return len;
-}
 /**
  * @brief  System Clock Configuration
  *         The system Clock is configured as follow :
