@@ -141,6 +141,8 @@ int main(void) {
         HAL_RNG_GenerateRandomNumber(&rng, &rndNum);
         int time = (rndNum % 9000) + 1000;
 
+        //If wrong button pressed light up yellow LED
+
         if (state == 0)
         {
             HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);
