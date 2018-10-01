@@ -8,7 +8,7 @@
 /* Private variables ---------------------------------------------------------*/
 UART_HandleTypeDef uart_handle;
 TIM_HandleTypeDef TimHandle;
-
+TIM_OC_InitTypeDef sConfig;
 GPIO_InitTypeDef led;
 
 #undef __GNUC__
@@ -34,14 +34,6 @@ static void CPU_CACHE_Enable(void);
  * @retval None
  */
 int main(void) {
-    __HAL_RCC_GPIOI_CLK_ENABLE()
-    ;    // enable the GPIOI clock
-    __HAL_RCC_TIM2_CLK_ENABLE()
-    ;     // we need to enable the TIM1
-    __HAL_RCC_GPIOA_CLK_ENABLE()
-    ;
-    __HAL_RCC_GPIOF_CLK_ENABLE()
-    ;
     /* This project template calls firstly two functions in order to configure MPU feature
      and to enable the CPU Cache, respectively MPU_Config() and CPU_CACHE_Enable().
      These functions are provided as template implementation that User may integrate
@@ -53,6 +45,11 @@ int main(void) {
 
     /* Enable the CPU Cache */
     CPU_CACHE_Enable();
+
+    __HAL_RCC_TIM2_CLK_ENABLE()
+    ;              // enable TIM1 clock
+    __HAL_RCC_GPIOA_CLK_ENABLE()
+    ;
 
     /* STM32F7xx HAL library initialization:
      - Configure the Flash ART accelerator on ITCM interface
@@ -74,58 +71,44 @@ int main(void) {
     uart_handle.Init.HwFlowCtl = UART_HWCONTROL_NONE;
     uart_handle.Init.Mode = UART_MODE_TX_RX;
 
-    //the timer's config structure
-
-    GPIO_InitTypeDef led;
-    led.Pin = GPIO_PIN_0;
-    led.Mode = GPIO_MODE_OUTPUT_PP;
-    led.Pull = GPIO_PULLDOWN;
-    led.Speed = GPIO_SPEED_HIGH;
-
-    GPIO_InitTypeDef led2;
-    led2.Pin = GPIO_PIN_10;
-    led2.Mode = GPIO_MODE_OUTPUT_PP;
-    led2.Pull = GPIO_PULLDOWN;
-    led2.Speed = GPIO_SPEED_HIGH;
-
-    GPIO_InitTypeDef led3;
-    led3.Pin = GPIO_PIN_9;
-    led3.Mode = GPIO_MODE_OUTPUT_PP;
-    led3.Pull = GPIO_PULLDOWN;
-    led3.Speed = GPIO_SPEED_HIGH;
-
     TimHandle.Instance = TIM2;
-    TimHandle.Init.Period = 60000 ;
-    TimHandle.Init.Prescaler = 10800;
+    TimHandle.Init.Period = 100;
+    TimHandle.Init.Prescaler = 1;
     TimHandle.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
     TimHandle.Init.CounterMode = TIM_COUNTERMODE_UP;
+    HAL_TIM_Base_Init(&TimHandle);
+
+    led.Pin = GPIO_PIN_15;
+    led.Mode = GPIO_MODE_AF_PP;
+    led.Pull = GPIO_PULLDOWN;
+    led.Speed = GPIO_SPEED_HIGH;
+    led.Alternate = GPIO_AF1_TIM2;
 
     HAL_GPIO_Init(GPIOA, &led);
-    HAL_GPIO_Init(GPIOF, &led2);
-    HAL_GPIO_Init(GPIOF, &led3);
 
     BSP_COM_Init(COM1, &uart_handle);
-    HAL_TIM_Base_Init(&TimHandle);            //Configure the timer
-    HAL_TIM_Base_Start(&TimHandle);
 
+    HAL_TIM_PWM_Init(&TimHandle);
+
+    sConfig.OCMode = TIM_OCMODE_PWM1;
+    sConfig.Pulse = 100;
+    HAL_TIM_PWM_ConfigChannel(&TimHandle, &sConfig, TIM_CHANNEL_1);
+
+    HAL_TIM_Base_Start(&TimHandle);
+    HAL_TIM_PWM_Start(&TimHandle, TIM_CHANNEL_1);
 
     while (1)
     {
-        int timerValue = __HAL_TIM_GET_COUNTER(&TimHandle);
-        if (timerValue == 1000)
+        for (int i = 0; i < 100; i++)
         {
-            HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);
-            HAL_GPIO_WritePin(GPIOF, GPIO_PIN_9, GPIO_PIN_RESET);
+            __HAL_TIM_SetCompare(&TimHandle, TIM_CHANNEL_1, i);
+            HAL_Delay(10);
         }
-        if (timerValue == 30000)
-        {
 
-            HAL_GPIO_WritePin(GPIOF, GPIO_PIN_10, GPIO_PIN_SET);
-        }
-        if (timerValue == 50000){
-            HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
-            HAL_GPIO_WritePin(GPIOF, GPIO_PIN_10, GPIO_PIN_RESET);
-            HAL_GPIO_WritePin(GPIOF, GPIO_PIN_9, GPIO_PIN_SET);
+        for (int i = 100; i > 0; i--)
+        {
+            __HAL_TIM_SetCompare(&TimHandle, TIM_CHANNEL_1, i);
+            HAL_Delay(10);
         }
     }
 }
