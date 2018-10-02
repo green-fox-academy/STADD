@@ -106,11 +106,13 @@ int main(void) {
 
         if (time % 2500 == 0 && num != 0)
         {
+            char buffer[2];
+            sprintf(buffer, "%d", num);
+            BSP_LCD_DisplayStringAt(10, 10, buffer, CENTER_MODE);
             printf("%d\r\n", num);
-            num--;
             printf("\r");
+            num--;
         }
-
     }
 }
 /**

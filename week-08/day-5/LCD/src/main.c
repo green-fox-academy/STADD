@@ -99,10 +99,8 @@ int main(void) {
 	uint32_t start;
 	uint32_t stop;
 
-	HAL_RNG_GenerateRandomNumber(&rng, &rndNum);
-	int time = (rndNum % 9000) + 1000;
 	uint32_t colors[] = { LCD_COLOR_RED, LCD_COLOR_LIGHTCYAN, LCD_COLOR_BLUE,
-			LCD_COLOR_GREEN, LCD_COLOR_LIGHTYELLOW };
+	LCD_COLOR_GREEN, LCD_COLOR_LIGHTYELLOW };
 
 	BSP_LCD_SetTextColor(LCD_COLOR_RED);
 	BSP_LCD_FillRect(90, 80, 300, 100);
@@ -111,6 +109,8 @@ int main(void) {
 
 	while (1) {
 		BSP_TS_GetState(&ts_state);
+		HAL_RNG_GenerateRandomNumber(&rng, &rndNum);
+		int time = (rndNum % 9000) + 1000;
 
 		if (ts_state.touchDetected && state == 0) {
 			BSP_LCD_Clear(LCD_COLOR_WHITE);
@@ -119,10 +119,11 @@ int main(void) {
 		}
 
 		if (state == 1) {
+
 			color = rand() % 6;
 			drawX = rand() % 381;
 			drawY = rand() % 181;
-			//HAL_Delay(time);
+			HAL_Delay(time);
 			BSP_LCD_SetTextColor(colors[color]);
 			BSP_LCD_FillRect(drawX, drawY, 70, 70);
 			start = HAL_GetTick();
@@ -138,7 +139,7 @@ int main(void) {
 				stop = HAL_GetTick();
 				BSP_LCD_Clear(LCD_COLOR_WHITE);
 				printf("Your reaction was: %lu milliseconds\r\n", stop - start);
-				HAL_Delay(300);
+				//HAL_Delay(300);
 				state = 1;
 			} else {
 				state = 2;
