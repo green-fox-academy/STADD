@@ -13,7 +13,7 @@ TIM_OC_InitTypeDef sConfig;
 GPIO_InitTypeDef led;
 GPIO_InitTypeDef conf;
 
-volatile b = 1;
+volatile b = 0;
 
 #undef __GNUC__
 
@@ -107,30 +107,33 @@ int main(void) {
     sConfig.Pulse = 0;
 
     HAL_TIM_PWM_ConfigChannel(&TimHandle, &sConfig, TIM_CHANNEL_1);
-    HAL_TIM_Base_Start_IT(&TimHandle);
+    HAL_TIM_Base_Start(&TimHandle);
     HAL_TIM_PWM_Start(&TimHandle, TIM_CHANNEL_1);
 
     BSP_PB_Init(BUTTON_WAKEUP, BUTTON_MODE_GPIO);
 
     while (1)
     {
-        if (sConfig.Pulse > 0)
+        HAL_Delay(300);
+        if (b > 0)
         {
-            sConfig.Pulse -= 100;
-            HAL_TIM_PWM_ConfigChannel(&TimHandle, &sConfig, TIM_CHANNEL_1);
-            HAL_TIM_PWM_Start(&TimHandle, TIM_CHANNEL_1);
+            b-= 50;
+            __HAL_TIM_SetCompare(&TimHandle, TIM_CHANNEL_1, b);
         }
-    }
 
+    }
 }
 
 void EXTI15_10_IRQHandler() {
     HAL_GPIO_EXTI_IRQHandler(conf.Pin);
+
 }
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
-    __HAL_TIM_SetCompare(&TimHandle, TIM_CHANNEL_1, b);
-    b += 10;
+    if(b < 500){
+        b += 50;
+            __HAL_TIM_SetCompare(&TimHandle, TIM_CHANNEL_1, b);
+    }
 }
 /**
  * @brief  Retargets the C library printf function to the USART.
